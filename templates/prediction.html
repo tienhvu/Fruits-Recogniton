@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+    <title>Fruit Recogniton</title>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script>
+        function chooseFile(fileInput){
+            if(fileInput.files && fileInput.files[0]){
+                var reader = new FileReader();
+                reader.onload = function name(e) {
+                    $('#image').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(fileInput.files[0]);
+            }
+        }
+    </script>
+  </head>
+  <style>
+    body{
+        background-image: url(static/background.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+</style>
+  <body class="bg-gray-200">
+    <header class="text-gray-600 body-font -my-8">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+          <a class="flex title-font font-medium items-center text-gray-900 mb-2 md:mb-0">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-green-500 rounded-full" viewBox="0 0 24 24">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+            <span class="ml-3 text-xl">Fruit Recognitions</span>
+          </a>
+          <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center" >
+            <a href="/" class="mr-5 hover:text-gray-900">Home</a>
+            <a href="/prediction" class="mr-5 hover:text-gray-900">Prediction</a>
+          </nav>
+        </div>
+      </header><hr>
+      <section class="text-gray-600 body-font -my-8">
+        <div class="container px-5 py-24 mx-auto">
+          <div class="flex flex-col text-center w-full mb-20">
+            <h2 class="text-xl text-green-600 tracking-widest font-medium title-font mb-3">Machine learning project Group 6</h2>
+            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Fruit and Vegetables Recognition</h1>
+            <p class="lg:w-2/3 mx-auto leading-relaxed text-base"> Website to help you identify fruits and vegetables</p>
+             <br><br><br><br><p class="text-primary"><b>{{prediction}}</b></p> <br>
+            <p class = "text-primary"><b>{{confidence}}</b></p>
+          </div>
+          <div class="center mt-0">
+   <form action="/prediction" method="POST" enctype="multipart/form-data">
+      <div class="mb-1">
+         <img src="" alt="" id="image" width="300" height="300">
+         <input type="file" class="form-control-md" id="fruit" name="fruit" aria-describedby="emailHelp" onchange="chooseFile(this)" accept="image/gif, image/jpeg, image/png">
+         <br>
+         <br>
+         <label for="exampleInputEmail1" class="form-label mb-1">Select fruit or vegetables image</label>
+      </div>
+      <button type="submit" class="btn btn-success">Submit</button>
+   </form>
+</div>
+
+
+  </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+
+  </body>
+</html>
